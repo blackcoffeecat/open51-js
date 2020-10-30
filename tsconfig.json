@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@open51/*": ["packages/*/dist"],
+      "@open51/utils/*": ["packages/utils/dist/*"],
+      "@open51/hooks/*": ["packages/hooks/dist/*"]
+    },
+    "jsx": "react",
+    "lib": ["DOM", "ESNEXT"],
+    "noEmitOnError": true
+  },
+  "exclude": ["node_modules"]
+}

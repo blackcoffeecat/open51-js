@@ -1,0 +1,21 @@
+{
+  "name": "@open51/hooks",
+  "version": "1.0.0",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn rmrf && tsc -W -p tsconfig.json",
+    "build": "yarn rmrf && tsc -p tsconfig.json",
+    "rmrf": "rimraf dist"
+  },
+  "dependencies": {
+    "@open51/utils": "1.0.0"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
+  }
+}
