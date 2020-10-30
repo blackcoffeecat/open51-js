@@ -1,11 +1,9 @@
-import { simpleCallback } from '.';
-
-function forkHandlers<T extends simpleCallback>(...handlers: Function[]) {
-  const fns = [].slice.call(handlers, 0);
+function forkHandlers<T extends (...args: any[]) => any>(...handlers: Function[]) {
+  const fns: T[] = [].slice.call(handlers, 0);
   return (...args: Parameters<T>) => {
     while (fns.length) {
       try {
-        fns.shift(...args);
+        fns.shift()?.(...args);
       } catch (e) {
         console.error(e);
       }

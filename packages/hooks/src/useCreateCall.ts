@@ -11,7 +11,7 @@ function useCreateCall() {
   return useCallback(<T extends (...args: any[]) => any>(key: string, fn: T) => {
     fnRef.current[key] = fn;
     if (!callRef.current[key]) {
-      callRef.current[key] = (...args) => {
+      callRef.current[key] = (...args: Parameters<T>) => {
         const popScope = setChainHandlerScope(() => mountedRef.current);
         try {
           let ret = (fnRef.current[key] as T)?.(...args);

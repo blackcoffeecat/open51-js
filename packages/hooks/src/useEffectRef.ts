@@ -1,9 +1,9 @@
-import { RefObject, useEffect, useRef } from 'react';
+import { MutableRefObject, RefObject, useEffect, useRef } from 'react';
 
-function useEffectRef<T>(value): RefObject<T> {
-  const ref = useRef<T>(value);
+function useEffectRef<T>(value?: T): RefObject<T | null> {
+  const ref: MutableRefObject<T | null> = useRef(value ?? null);
   useEffect(() => {
-    ref.current = value;
+    ref.current = value ?? null;
   }, [value]);
 
   return ref;

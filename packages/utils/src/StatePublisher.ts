@@ -4,7 +4,7 @@ export type IsEqualState<T = any> = (prevState: T, nextState: T) => boolean;
 
 export type StatePublisherMode = 'immediate' | 'nextTick';
 
-export type StatePublisherCallback<T> = (value: T) => void;
+export type StatePublisherCallback<T> = (value: T | null) => void;
 
 class StatePublisher<T = any> {
   static IMMEDIATE = 'immediate';
@@ -13,15 +13,15 @@ class StatePublisher<T = any> {
 
   readonly isEqualState: IsEqualState = () => false;
 
+  mode: StatePublisherMode;
+
   readonly callbacks: StatePublisherCallback<T>[] = [];
 
-  private __state: T = null;
+  private __state?: T;
 
-  get state() {
-    return this.__state;
+  get state(): T | null {
+    return this.__state ?? null;
   }
-
-  mode: StatePublisherMode;
 
   constructor(isEqualState?: IsEqualState, mode?: StatePublisherMode) {
     this.isEqualState = isEqualState ?? (() => true);
@@ -35,7 +35,7 @@ class StatePublisher<T = any> {
     };
   }
 
-  update(nextState) {
+  update(nextState: T) {
     if (this.isEqualState(this.state, nextState)) return;
     this.__state = nextState;
     if (this.mode === 'nextTick') {
@@ -50,7 +50,7 @@ class StatePublisher<T = any> {
     const state = this.state;
     while (callbacks.length) {
       try {
-        callbacks.shift()(state);
+        callbacks.shift()?.(state ?? null);
       } catch (e) {
         console.error(e);
       }

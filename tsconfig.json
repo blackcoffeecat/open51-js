@@ -5,6 +5,7 @@
     "sourceMap": true,
     "declaration": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
       "@open51/*": ["packages/*/dist"],
       "@open51/utils/*": ["packages/utils/dist/*"],
@@ -12,6 +13,7 @@
     },
     "jsx": "react",
     "lib": ["DOM", "ESNEXT"],
+    "types": ["node", "react"],
     "noEmitOnError": true
   },
   "exclude": ["node_modules"]

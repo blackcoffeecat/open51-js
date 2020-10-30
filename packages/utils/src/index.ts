@@ -1,5 +1,3 @@
-export declare type simpleCallback = (...args: any[]) => any;
-
 export { default as forkHandlers } from './forkHandlers';
 export { default as getType } from './getType';
 export { default as isPromise } from './isPromise';

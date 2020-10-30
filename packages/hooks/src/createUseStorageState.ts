@@ -18,13 +18,13 @@ function crateUseStorageState<T = any>(storageKey: string, storageType: storageT
   return useStorageState;
 
   function useStorageState() {
-    const initialValue = useMemo(() => fallbackCall(JSON.parse, storage.getItem(storageKey)), []);
+    const initialValue = useMemo(() => fallbackCall(JSON.parse, storage.getItem(storageKey) || 'null'), []);
     const [state, setState] = useState<T>(initialValue);
     const stateRef = useEffectRef<T>(state);
 
     useEffect(() => {
       const onStorage = () => {
-        const json = storage.getItem(storageKey);
+        const json = storage.getItem(storageKey) || 'null';
         if (json === JSON.stringify(stateRef.current)) return;
         setState(fallbackCall(JSON.parse, json));
       };

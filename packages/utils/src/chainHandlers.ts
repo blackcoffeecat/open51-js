@@ -1,10 +1,9 @@
-import { simpleCallback } from '.';
 import isSyntheticEvent from './isSyntheticEvent';
 
 type ChainHandlerScope = boolean | (() => boolean);
 let scope: ChainHandlerScope = true;
 
-export function setChainHandlerScope(nextScope) {
+export function setChainHandlerScope(nextScope: ChainHandlerScope) {
   let prevScope = scope;
   scope = nextScope;
   return function popChainHandlerScope() {
@@ -12,16 +11,15 @@ export function setChainHandlerScope(nextScope) {
   };
 }
 
-const shouldContinue = (value) => {
+const shouldContinue = (value: any) => {
   if (typeof value === 'boolean') return value;
   return true;
 };
 
-function chainHandlers<T extends simpleCallback>(...handlers: T[]): (...args: Parameters<T>) => Promise<void> {
-  const fns = [].slice.call(handlers, 0);
+function chainHandlers<T extends (...args: any[]) => any>(...handlers: T[]): (...args: Parameters<T>) => Promise<void> {
+  const fns: T[] = [].slice.call(handlers, 0);
 
-  return async (...args: any[]) => {
-    let chainedArgs = [];
+  return async (...args: Parameters<T>) => {
     args.forEach((item) => {
       if (isSyntheticEvent(item)) item.persist();
     });
@@ -31,8 +29,7 @@ function chainHandlers<T extends simpleCallback>(...handlers: T[]): (...args: Pa
       if ((typeof scope === 'function' ? scope() : scope) === false) break;
 
       try {
-        ret = await fns.shift()(...chainedArgs);
-        chainedArgs = ret != null ? [ret] : [];
+        ret = await fns.shift()?.(...args);
       } catch (e) {
         console.error(e);
         ret = false;

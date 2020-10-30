@@ -12,11 +12,11 @@ function useSet<T = any>(): [Set<T>, SetMisc<T>] {
 
   const misc = useMemo(
     () => ({
-      add(value) {
+      add(value: T) {
         setState((prevState) => new Set(prevState).add(value));
       },
-      delete(value) {
-        let ret;
+      delete(value: T) {
+        let ret = false;
         setState((prevState) => {
           const newState = new Set(prevState);
           ret = newState.delete(value);
@@ -27,7 +27,7 @@ function useSet<T = any>(): [Set<T>, SetMisc<T>] {
       clear() {
         setState(new Set());
       },
-      from(values) {
+      from(values: Iterable<T>) {
         setState(new Set(values));
       },
     }),

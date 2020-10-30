@@ -1,12 +1,10 @@
-import { simpleCallback } from './';
 import nextTick from './nextTick';
 
-function createNextTickOnce<T extends simpleCallback>(fn: T): () => Promise<ReturnType<T>> {
-  let result;
-  let done;
+function createNextTickOnce<T extends (...args: any[]) => any>(fn: T): () => Promise<ReturnType<T>> {
+  let result: ReturnType<T>;
+  let done: boolean;
   return () => {
     done = false;
-    result = null;
     return new Promise((resolve) => {
       nextTick(() => {
         if (!done) {

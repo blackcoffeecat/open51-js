@@ -7,7 +7,7 @@ function usePublisher<T = any>(isEqualState?: IsEqualState<T>, mode?: StatePubli
   const publisher = useMemo(() => new StatePublisher(isEqualStateCall, mode), []);
 
   useEffect(() => {
-    publisher.mode = mode;
+    if (mode) publisher.mode = mode;
   }, [mode]);
 
   return publisher;

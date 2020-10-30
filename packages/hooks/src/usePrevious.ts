@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 
-function usePrevious<T = any>(value: T): T {
-  const ref = useRef<T>();
+function usePrevious<T = any>(value?: T) {
+  const ref: MutableRefObject<T | null> = useRef(null);
 
-  const [state, update] = useState<T>();
+  const [state, update] = useState<T | null>(null);
 
   useEffect(() => {
     update(ref.current);
-    ref.current = value;
+    ref.current = value ?? null;
   }, [value]);
 
   return state;

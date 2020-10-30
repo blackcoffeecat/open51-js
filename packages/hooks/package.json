@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "yarn rmrf && tsc -W -p tsconfig.json",
     "build": "yarn rmrf && tsc -p tsconfig.json",
-    "rmrf": "rimraf dist"
+    "rmrf": "rimraf dist",
+    "pretty": "prettier --write src/**/*"
   },
   "dependencies": {
     "@open51/utils": "1.0.0"

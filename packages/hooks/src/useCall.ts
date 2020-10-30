@@ -9,12 +9,10 @@ function useCall<T extends (...args: any[]) => any>(fn: T) {
   fnRef.current = fn;
 
   return useCallback((...args: Parameters<T>) => {
-    const refFn = fnRef.current;
-
     const popScope = setChainHandlerScope(() => mountedRef.current);
 
     try {
-      let ret = refFn(...args);
+      let ret = fnRef.current?.(...args);
       if (isPromise(ret)) {
         ret = ret.finally(popScope);
       } else {
