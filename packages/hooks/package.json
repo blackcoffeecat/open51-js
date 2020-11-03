@@ -1,6 +1,6 @@
 {
   "name": "@open51/hooks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React hooks",
   "keywords": [
     "react",
@@ -17,7 +17,7 @@
     "pretty": "prettier --write src/**/*"
   },
   "dependencies": {
-    "@open51/utils": "^1.0.3"
+    "@open51/utils": "^1.0.4"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"

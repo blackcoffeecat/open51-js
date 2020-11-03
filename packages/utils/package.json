@@ -1,7 +1,7 @@
 {
   "name": "@open51/utils",
   "description": "js utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index",
   "types": "index",
   "license": "MIT",
