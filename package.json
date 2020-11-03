@@ -1,13 +1,17 @@
 {
   "name": "open51-js",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "private": true,
+  "author": "BlackCoffeeCat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blackcoffeecat/open51-js.git"
+  },
   "scripts": {
     "example": "webpack-dev-server --hot --open",
     "dev": "lerna run dev --parallel --stream",
-    "build": "lerna run build --parallel --stream",
+    "build": "lerna run build --stream",
     "pretty": "lerna run pretty"
   },
   "workspaces": {

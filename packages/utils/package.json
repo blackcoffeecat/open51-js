@@ -1,11 +1,13 @@
 {
   "name": "@open51/utils",
-  "version": "1.0.1",
+  "description": "js utils",
+  "version": "1.0.0",
   "main": "index",
   "types": "index",
   "scripts": {
     "dev": "yarn rmrf && tsc -W -p tsconfig.json",
-    "build": "yarn rmrf && tsc -p tsconfig.json",
+    "build": "yarn rmrf && tsc -p tsconfig.json && yarn run build:copy-files",
+    "build:copy-files": "node ../../scripts/copy-files.js",
     "rmrf": "rimraf dist",
     "pretty": "prettier --write src/**/*"
   },
