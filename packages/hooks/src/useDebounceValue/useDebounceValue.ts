@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useSetTimeout from './useSetTimeout';
+import useSetTimeout from '../useSetTimeout';
 
 function useDebounceValue<T>(value: T, delay: number = 200) {
   const setTimeout = useSetTimeout();

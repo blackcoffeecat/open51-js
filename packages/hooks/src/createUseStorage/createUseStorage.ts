@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import useCall from './useCall';
-import useEffectRef from './useEffectRef';
+import useCall from '../useCall';
+import useEffectRef from '../useEffectRef';
 import fallbackCall from '@open51/utils/fallbackCall';
 
 type storageType = 'sessionStorage' | 'localStorage';
@@ -9,7 +9,7 @@ type updateCallback<T> = (value: T) => T;
 
 type updater<T> = T | updateCallback<T>;
 
-function crateUseStorageState<T = any>(storageKey: string, storageType: storageType = 'localStorage') {
+function crateUseStorage<T = any>(storageKey: string, storageType: storageType = 'localStorage') {
   const storage = storageType === 'sessionStorage' ? sessionStorage : localStorage;
 
   // SSR compatible
@@ -46,4 +46,4 @@ function crateUseStorageState<T = any>(storageKey: string, storageType: storageT
   }
 }
 
-export default crateUseStorageState;
+export default crateUseStorage;

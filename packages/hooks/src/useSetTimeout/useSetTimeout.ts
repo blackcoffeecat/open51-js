@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import useUnmount from './useUnmount';
+import useUnmount from '../useUnmount';
 
 function useSetTimeout() {
   const timerRef = useRef<any>();

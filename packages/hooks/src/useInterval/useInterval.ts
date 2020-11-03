@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
-import useEffectRef from './useEffectRef';
+import useEffectRef from '../useEffectRef';
 
 function useInterval<T extends (...args: any[]) => void>(fn: T, delay: number, ...args: Parameters<T>) {
   const fnRef = useEffectRef<[T, ...Parameters<T>]>([fn, ...args]);

@@ -1,6 +1,6 @@
 import StatePublisher, { IsEqualState, StatePublisherMode } from '@open51/utils/StatePublisher';
 import { useEffect, useMemo } from 'react';
-import useCall from './useCall';
+import useCall from '../useCall';
 
 function usePublisher<T = any>(isEqualState?: IsEqualState<T>, mode?: StatePublisherMode): StatePublisher {
   const isEqualStateCall = useCall(isEqualState ?? (() => false));

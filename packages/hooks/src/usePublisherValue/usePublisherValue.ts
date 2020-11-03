@@ -1,8 +1,8 @@
 import StatePublisher from '@open51/utils/StatePublisher';
 import { useState } from 'react';
-import useMountEffect from './useMountEffect';
+import useMountEffect from '../useMountEffect';
 
-function usePublisherValue<T>(publisher: StatePublisher<T>): T {
+function usePublisherValue<T>(publisher: StatePublisher<T>): T | null {
   const [state, setState] = useState(publisher.state);
 
   useMountEffect(publisher.subscribe, setState);

@@ -1,6 +1,6 @@
 import { MutableRefObject, useCallback, useMemo, useRef, useState } from 'react';
-import useEffectRef from './useEffectRef';
-import useUnmount from './useUnmount';
+import useEffectRef from '../useEffectRef';
+import useUnmount from '../useUnmount';
 
 type AsyncStatus = 'fulfilled' | 'rejected' | 'pending' | 'canceled';
 

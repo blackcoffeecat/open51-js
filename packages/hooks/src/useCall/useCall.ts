@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import useMountedRef from './useMountedRef';
+import useMountedRef from '../useMountedRef';
 import { setChainHandlerScope } from '@open51/utils/chainHandlers';
 import isPromise from '@open51/utils/isPromise';
 

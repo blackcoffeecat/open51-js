@@ -1,5 +1,5 @@
 import { EffectCallback, useEffect } from 'react';
-import useEffectRef from './useEffectRef';
+import useEffectRef from '../useEffectRef';
 
 function useUnmount(fn: ReturnType<EffectCallback>) {
   const fnRef = useEffectRef(fn);
