@@ -2,7 +2,7 @@
   "name": "@open51/utils",
   "private": false,
   "description": "js utils",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "index",
   "types": "index",
   "license": "MIT",
