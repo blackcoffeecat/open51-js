@@ -7,9 +7,12 @@
     "react",
     "hooks"
   ],
-  "main": "index",
-  "types": "index",
+  "main": "dist/index.js",
+  "types": "dist/index",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "yarn rmrf && tsc -W -p tsconfig.json",
     "build": "yarn rmrf && tsc -p tsconfig.json && yarn run build:copy-files",
