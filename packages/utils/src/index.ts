@@ -18,4 +18,9 @@ export { default as isSyntheticEvent } from './isSyntheticEvent';
 export { default as nextTick } from './nextTick';
 
 export { default as StatePublisher } from './StatePublisher';
+
 export * from './StatePublisher';
+
+export { default as Until } from './Until';
+
+export * from './Until';
